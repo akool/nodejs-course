@@ -11,7 +11,11 @@ router.route('/').get(async (req, res) => {
 router.route('/:id').get(async (req, res) => {
   const board = await boardsService.get(req.params.id);
 
-  res.json(Board.toResponse(board));
+  if (board) {
+    res.json(Board.toResponse(board));
+  } else {
+    res.sendStatus(404);
+  }
 });
 
 router.route('/').post(async (req, res) => {
