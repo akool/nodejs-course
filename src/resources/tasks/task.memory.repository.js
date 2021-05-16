@@ -37,9 +37,7 @@ const del = async (id) => {
 };
 
 const delByBoard = async (boardId) => {
-  const deleted = await db.Tasks.deleteMany({ boardId });
-
-  return deleted;
+  await db.Tasks.deleteMany({ boardId });
 };
 
 module.exports = { getAll, get, post, put, del, delByBoard, updateMany };
